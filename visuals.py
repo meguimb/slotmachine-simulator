@@ -6,6 +6,12 @@ import turtle
 # > connect visuals with other code
 # > write readme explaining how to use
 
+def waitBeforeClose():
+    turtle.done()
+
+def cleanWindow():
+    turtle.clearscreen()
+
 def askInput(str):
     tinput = turtle.Turtle()
     tinput.hideturtle()
@@ -14,6 +20,8 @@ def askInput(str):
 def writeText(str):
     ttext = turtle.Turtle() 
     ttext.hideturtle()
+    window = turtle.Screen()
+    window.bgcolor("black")
     ttext.up()
     ttext.goto(0, 50)
     ttext.down()
