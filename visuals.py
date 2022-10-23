@@ -1,11 +1,6 @@
 import turtle
 
 
-# TO DO
-# > figure out how to use 2 turtles (one for text and balance and errors and the other for the slots)
-# > connect visuals with other code
-# > write readme explaining how to use
-
 def waitBeforeClose():
     turtle.done()
 
