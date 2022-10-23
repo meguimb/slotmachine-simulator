@@ -1,4 +1,4 @@
-import random, symbol
+import random, symbol, visuals
 
 class SlotMachine:
     history = []
@@ -11,26 +11,30 @@ class SlotMachine:
         payout = 0
         if self.slots.count(self.slots[0]) == 3:
             payout = creditsBetted * self.slots[0].getGain()
-            print(" > :) You won {} credits. Right on!".format(payout))
+            visuals.writeText(":) You won {} credits. Right on!".format(payout))
         else:
-            print(" > :( Sorry! It seems like you've lost your initial bet!")
+            visuals.writeText(":( Sorry! It seems like you've lost your initial bet!")
         return payout
     
     def spin_result_repr(self):
         slots_symbols = [s.getVisualRepr() for s in self.slots]
-        print([s for s in slots_symbols])
+        return [s for s in slots_symbols]
     
     def spin(self):
         self.slots = list(random.choices(self.symbols, weights=self.nr_ocurr, k=3))
-        self.spin_result_repr()
+        visuals.drawSlots(self.spin_result_repr())
         self.history.append([self.slots])
 
     def play(self, player, current_bet):
         player.withdraw(current_bet)
         self.spin()
+
         gains = self.getPayout(current_bet)
         player.deposit(gains)
     
     def printHistory(self):
         print(*self.history, sep=", ")
         return 0
+    
+    def getNumberOfRounds(self):
+        return len(self.history)

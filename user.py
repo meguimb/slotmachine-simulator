@@ -15,7 +15,7 @@ class User:
         self.credits = self.credits - credits
     
     def canPlay(self, creditsBet):
-        return creditsBet <= self.credits
+        return creditsBet <= self.credits and creditsBet > 0
     
     def stopPlaying(self):
         return self.credits <= 0

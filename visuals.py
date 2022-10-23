@@ -1,13 +1,25 @@
 import turtle
 
-def askInput(t, str):
-    return t.textInput("Slotmachine", str)
+
+# TO DO
+# > figure out how to use 2 turtles (one for text and balance and errors and the other for the slots)
+# > connect visuals with other code
+# > write readme explaining how to use
+
+def askInput(str):
+    tinput = turtle.Turtle()
+    tinput.hideturtle()
+    return turtle.textinput("Slotmachine", str)
 
 def writeText(str):
     ttext = turtle.Turtle() 
     ttext.hideturtle()
+    ttext.up()
+    ttext.goto(0, 50)
+    ttext.down()
     ttext.color("white")
-    ttext.write(str, align="center", font=("Verdana", 24, "bold"))
+    ttext.write(str, align="center", font=("Verdana", 20, "bold"))
+    ttext.up()
 
 def drawSlots(symbolsLst): 
     t = turtle.Turtle()
@@ -18,14 +30,14 @@ def drawSlots(symbolsLst):
     t.speed(200)
     turtle.width(14)
     t.up()  
-    t.goto(-300, 200)  
+    t.goto(-200, -100)  
     t.down()  
     draw3squares(t, 100, symbolsLst)
-    window.exitonclick()
 
 def draw3squares(t, length, symbolsLst):
     for i in range(3):
         t.color("red")
+        t.down()
         drawSquare(t, length)
         t.up()  
 
