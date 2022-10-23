@@ -37,9 +37,36 @@ class User:
         return 0
 
 class SlotMachine:
-    self.symbols = ['0', "?", "X", "@", "$", "£", "€"]
-    self.nrOcurr = [50, 40, 30, 20, 10, 5, 1]
-    self.gain3x = [5, 10, 20, 70, 200, 1000, 100000]
-    self.slots = []
+    symbols = [i for i in range(7)]
+    symbolsRepr = ['0', "?", "X", "@", "$", "£", "€"]
+    nrOcurr = [50, 40, 30, 20, 10, 5, 1]
+    sgain3x = [5, 10, 20, 70, 200, 1000, 100000]
+    slots = [-1 for i in range(3)]
     def __init__():
         return 0
+    
+    def spin():
+        self.slots = list(random.choices(self.symbols, weights=self.nrOcurr, k=3))
+
+    def getPayout(creditsBetted):
+        if self.slots.count(self.slots[0]) == 3:
+            return creditsBetted * self.gain3x[self.slots[0]]
+        return 0
+
+class Symbol:
+    def __init__(self, symbolRepr, nOcurr, gain3x):
+        self.repr = symbolRepr
+        self.nOcurr = nOcurr
+        self.gain3x = gain3x
+    def __repr__(self):
+        return self.repr
+
+    def getWeight(self):
+        return self.nOcurr
+
+    def getGain(self):
+        return self.gain3x
+
+# random.choices(symbols, weights=nrOcurr, k=3)
+    
+
